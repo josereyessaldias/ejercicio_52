@@ -1,6 +1,8 @@
 # README
 
-Agregué timedatepicker e incluí la posibilidad de tener actividades por realizar y pendientes.
+Arreglé levemente las vistas y instalé Fullcalendar.
+
+heroku link: https://ejercicio52.herokuapp.com
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
