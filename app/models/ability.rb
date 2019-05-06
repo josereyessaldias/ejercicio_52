@@ -9,12 +9,14 @@ class Ability
     elsif user.admin?
         can [:manage], :all
     elsif user.player?
-        can [:index, :user_page], :all
-        can [:edit, :create, :destroy, :update], UserActivity, user_id: user.id
+        can [:index, :user_page, :user_calendar], :all
+        can [:edit, :create, :destroy, :update, :update_calendar], UserActivity, user_id: user.id
         can [:create], Activity, user_id: user.id
         can [:update, :edit], Activity, owner_id: user.id
         can [:manage], [Billing, PromoteActivity], user_id: user.id
         can [:create,:destroy], Contact, user_id: user.id
+
+        
         
 
     end

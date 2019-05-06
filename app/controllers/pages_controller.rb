@@ -53,8 +53,13 @@ class PagesController < ApplicationController
         @following = false
       end
     end
-    
 
+  end
+  
+
+  def user_calendar
+    @user = User.find(params[:user_id])
+    @act_user_por_realizar = UserActivity.where(user_id: params[:user_id], status: 'por_hacer')
 
   end
 

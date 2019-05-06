@@ -2,11 +2,13 @@ Rails.application.routes.draw do
   get 'promote_activities/index'
   get 'pages/index'
   get 'user_page/:user_id', to: 'pages#user_page', as: 'user_page'
+  get 'user_calendar/:user_id', to: 'pages#user_calendar', as: 'user_calendar'
   
   post 'activity/:user_id', to: 'user_activities#create', as: 'asigne_activity'
   get 'edit_user_act/:user_id/:activity_id', to: 'user_activities#edit', as: 'edit_user_activity'
   delete 'activity/:user_id/:activity_id', to: 'user_activities#destroy', as: 'destroy_activity'
   patch 'edit/:user_id/:activity_id', to: 'user_activities#update', as: 'update_user_activity'
+  patch 'edit_calendar/:activity_id', to: 'user_activities#update_calendar', as: 'update_user_calendar'
 
   get 'activities/new'
   post 'new_activity', to: 'activities#create', as: 'new_activity'

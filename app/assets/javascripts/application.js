@@ -15,6 +15,7 @@
 //= require rails-ujs
 //= require tether/dist/js/tether
 //= require moment/moment
+//= require fullcalendar/dist/fullcalendar
 //= require moment-timezone/moment-timezone
 //= require bootstrap4-datetimepicker/build/js/bootstrap-datetimepicker.min
 //= require activestorage

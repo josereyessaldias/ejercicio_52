@@ -50,7 +50,9 @@
 		<% end %>
 	</div>
 	<div class="col-6">
-		<h3>Actividades por Realizar</h3>
+		<% if @act_user_por_realizar != [] %>
+			<h3>Actividades por Realizar <%= link_to "Ver en Calendario", user_calendar_path(@user.id), :class=> 'btn btn-sm btn-dark float-right', :style=> 'width:180px;' %></h3> 
+		<% end %>
 		<% @categories.each do |category| %>
 			<% @act_user_por_realizar.each do |useract| %>
 				<% if useract.activity.category_id == category.id %>

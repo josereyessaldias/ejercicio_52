@@ -5,6 +5,7 @@ class UserActivitiesController < ApplicationController
   @activity.user_id = params[:user_id]
   @activity.activity_id = params[:activity_id]
   @activity.status = params[:status]
+  @activity.title = "#{Activity.find(params[:activity_id]).category.name}: #{Activity.find(params[:activity_id]).name}"
   authorize! :create, @activity
   @activity.save
   redirect_to edit_user_activity_path(@activity.user_id,@activity.activity.id)
@@ -21,11 +22,19 @@ class UserActivitiesController < ApplicationController
     @activity = UserActivity.where(user_id: params[:user_id], activity_id: params[:activity_id]).first
     authorize! :update, @activity
     @activity.update(start: params[:user_activity][:start])
-    @actuser_photo = ActuserPhoto.new
-    @actuser_photo.photo = params[:user_activity][:photo]
-    @actuser_photo.user_activity_id = @activity.id
-    @actuser_photo.save
+    if params[:user_activity][:photo] != nil
+      @actuser_photo = ActuserPhoto.new
+      @actuser_photo.photo = params[:user_activity][:photo]
+      @actuser_photo.user_activity_id = @activity.id
+      @actuser_photo.save
+    end
     redirect_to user_page_path
+  end
+
+  def update_calendar
+    @activity = UserActivity.find(params[:activity_id])
+    authorize! :update_calendar, @activity
+    @activity.update(start: params[:user_activity][:start])
   end
 
 
